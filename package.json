@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "pop.tg-backend",
   "version": "1.0.0",
   "description": "Pop.tg URL shortender backend worker",
   "license": "MIT",
