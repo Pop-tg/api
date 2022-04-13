@@ -16,7 +16,8 @@ export enum ErrorsCode {
   BadRequest = 101,
   KeyDuplicated = 102,
   NotAuthorized = 103,
-  RecordNotFound = 104
+  RecordNotFound = 104,
+  BannedUrl = 105,
 }
 
 export interface URLRecord {

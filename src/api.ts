@@ -11,6 +11,7 @@ import {
 import { ApiError, Methods } from './helper'
 import * as yup from 'yup'
 import { prefix } from '.'
+import { banned } from './banned'
 
 // Unique identifier for record
 const key = yup
@@ -53,6 +54,9 @@ export default new Methods('api/v2')
     async body => {
       if (await KV.get(prefix + body.key)) {
         throw new ApiError('KeyDuplicated', [`${body.key} already existed`])
+      }
+      if (banned.some(re => re.test(body.value))) {
+        throw new ApiError('BannedUrl', [`${body.value} is banned`])
       }
       const value: URLRecordInKv = {
         key: body.key,
